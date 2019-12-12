@@ -4,7 +4,12 @@ use rstd::collections::btree_map::Values;
 use rstd::iter::Flatten;
 use serde::{Deserialize, Deserializer};
 use serde::de::{Visitor, SeqAccess};
-//use serde_json;
+
+#[cfg(feature = "std")]
+use serde_json;
+#[cfg(feature = "std")]
+use std::io;
+
 use operation::Operation;
 use {errors, ErrorKind, Event, Constructor, Function};
 
@@ -66,10 +71,11 @@ impl<'a> Visitor<'a> for ContractVisitor {
 }
 
 impl Contract {
+	#[cfg(feature = "std")]
 	/// Loads contract from json.
-//	pub fn load<T: io::Read>(reader: T) -> errors::Result<Self> {
-//		serde_json::from_reader(reader).map_err(From::from)
-//	}
+	pub fn load<T: io::Read>(reader: T) -> errors::Result<Self> {
+		serde_json::from_reader(reader).map_err(From::from)
+	}
 
 	/// Creates constructor call builder.
 	pub fn constructor(&self) -> Option<&Constructor> {
