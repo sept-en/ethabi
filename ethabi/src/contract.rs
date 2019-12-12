@@ -1,10 +1,10 @@
-use std::{io, fmt};
-use std::collections::HashMap;
-use std::collections::hash_map::Values;
-use std::iter::Flatten;
+use rstd::fmt;
+use rstd::collections::btree_map::BTreeMap;
+use rstd::collections::btree_map::Values;
+use rstd::iter::Flatten;
 use serde::{Deserialize, Deserializer};
 use serde::de::{Visitor, SeqAccess};
-use serde_json;
+//use serde_json;
 use operation::Operation;
 use {errors, ErrorKind, Event, Constructor, Function};
 
@@ -14,9 +14,9 @@ pub struct Contract {
 	/// Contract constructor.
 	pub constructor: Option<Constructor>,
 	/// Contract functions.
-	pub functions: HashMap<String, Function>,
+	pub functions: BTreeMap<String, Function>,
 	/// Contract events, maps signature to event.
-	pub events: HashMap<String, Vec<Event>>,
+	pub events: BTreeMap<String, Vec<Event>>,
 	/// Contract has fallback function.
 	pub fallback: bool,
 }
@@ -39,8 +39,8 @@ impl<'a> Visitor<'a> for ContractVisitor {
 	fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error> where A: SeqAccess<'a> {
 		let mut result = Contract {
 			constructor: None,
-			functions: HashMap::default(),
-			events: HashMap::default(),
+			functions: BTreeMap::default(),
+			events: BTreeMap::default(),
 			fallback: false,
 		};
 
@@ -67,9 +67,9 @@ impl<'a> Visitor<'a> for ContractVisitor {
 
 impl Contract {
 	/// Loads contract from json.
-	pub fn load<T: io::Read>(reader: T) -> errors::Result<Self> {
-		serde_json::from_reader(reader).map_err(From::from)
-	}
+//	pub fn load<T: io::Read>(reader: T) -> errors::Result<Self> {
+//		serde_json::from_reader(reader).map_err(From::from)
+//	}
 
 	/// Creates constructor call builder.
 	pub fn constructor(&self) -> Option<&Constructor> {

@@ -1,7 +1,14 @@
 #![allow(unknown_lints)]
 #![allow(missing_docs)]
 
-use std::{num, string};
+use rstd::num;
+
+#[cfg(feature = "std")]
+use std::string;
+
+#[cfg(feature = "no_std")]
+use alloc::string;
+
 use {serde_json, hex};
 
 error_chain! {

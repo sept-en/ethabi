@@ -6,6 +6,7 @@ extern crate rustc_hex as hex;
 extern crate serde;
 extern crate serde_json;
 extern crate tiny_keccak;
+extern crate rstd;
 
 #[macro_use]
 extern crate serde_derive;

@@ -1,6 +1,6 @@
 //! Contract event.
 
-use std::collections::HashMap;
+use rstd::collections::btree_map::BTreeMap;
 use tiny_keccak::keccak256;
 use signature::long_signature;
 use {
@@ -169,7 +169,7 @@ impl Event {
 
 		let named_tokens = topics_named_tokens
 			.chain(data_named_tokens)
-			.collect::<HashMap<String, Token>>();
+			.collect::<BTreeMap<String, Token>>();
 
 		let decoded_params = self.params_names()
 			.into_iter()
