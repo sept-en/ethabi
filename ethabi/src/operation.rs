@@ -2,7 +2,9 @@
 
 use serde::{Deserialize, Deserializer};
 use serde::de::{Error as SerdeError};
+#[cfg(feature = "std")]
 use serde_json::Value;
+#[cfg(feature = "std")]
 use serde_json::value::from_value;
 use {Function, Constructor, Event};
 
@@ -19,6 +21,7 @@ pub enum Operation {
 	Fallback,
 }
 
+#[cfg(feature = "std")]
 impl<'a> Deserialize<'a> for Operation {
 	fn deserialize<D>(deserializer: D) -> Result<Self, D::Error> where D: Deserializer<'a> {
 		let v: Value = Deserialize::deserialize(deserializer)?;

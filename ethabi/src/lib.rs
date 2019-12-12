@@ -4,6 +4,8 @@
 
 extern crate rustc_hex as hex;
 extern crate serde;
+
+#[cfg(feature = "std")]
 extern crate serde_json;
 extern crate tiny_keccak;
 extern crate rstd;

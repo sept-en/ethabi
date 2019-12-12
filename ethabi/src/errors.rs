@@ -9,11 +9,36 @@ use std::string;
 #[cfg(feature = "no_std")]
 use alloc::string;
 
-use {serde_json, hex};
+#[cfg(feature = "std")]
+use serde_json;
 
+use hex;
+
+#[cfg(feature = "std")]
 error_chain! {
 	foreign_links {
 		SerdeJson(serde_json::Error);
+		ParseInt(num::ParseIntError);
+		Utf8(string::FromUtf8Error);
+		Hex(hex::FromHexError);
+	}
+
+	errors {
+		InvalidName(name: String) {
+			description("Invalid name"),
+			display("Invalid name `{}`", name),
+		}
+
+		InvalidData {
+			description("Invalid data"),
+			display("Invalid data"),
+		}
+	}
+}
+
+#[cfg(feature = "no_std")]
+error_chain! {
+	foreign_links {
 		ParseInt(num::ParseIntError);
 		Utf8(string::FromUtf8Error);
 		Hex(hex::FromHexError);

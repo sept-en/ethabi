@@ -1,5 +1,6 @@
 use rstd::ops;
 use serde::{Serialize, Serializer};
+#[cfg(feature = "std")]
 use serde_json::Value;
 use {Hash, Token};
 
@@ -101,6 +102,7 @@ impl<T> Into<Vec<T>> for Topic<T> {
 	}
 }
 
+#[cfg(feature = "std")]
 impl Serialize for Topic<Hash> {
 	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
 	where S: Serializer {
