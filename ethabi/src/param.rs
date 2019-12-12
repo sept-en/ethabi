@@ -2,7 +2,8 @@
 use ParamType;
 
 /// Function param.
-#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "std", derive(Deserialize))]
 pub struct Param {
 	/// Param name.
 	pub name: String,
