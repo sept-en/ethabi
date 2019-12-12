@@ -25,7 +25,7 @@ paste = "0.1.5"
 [features]
 default = ["std"]
 std = [
-    "rustc-hex",
+    "rustc-hex/std",
     "serde/std",
     "serde_json",
     "rstd/std",
