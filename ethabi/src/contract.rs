@@ -83,22 +83,22 @@ impl Contract {
 	}
 
 	/// Creates function call builder.
-	pub fn function(&self, name: &str) -> errors::Result<&Function> {
-		self.functions.get(name).ok_or_else(|| ErrorKind::InvalidName(name.to_owned()).into())
+	pub fn function(&self, name: &str) -> Result<&Function, &'static str> {
+		self.functions.get(name).ok_or_else(|| "Invalid name")
 	}
 
 	/// Get the contract event named `name`, the first if there are multiple.
-	pub fn event(&self, name: &str) -> errors::Result<&Event> {
+	pub fn event(&self, name: &str) -> Result<&Event, &'static str> {
 		self.events.get(name).into_iter()
 							.flatten()
 							.next()
-							.ok_or_else(|| ErrorKind::InvalidName(name.to_owned()).into())
+							.ok_or_else(|| "Invalid name")
 	}
 
 	/// Get all contract events named `name`.
-	pub fn events_by_name(&self, name: &str) -> errors::Result<&Vec<Event>> {
+	pub fn events_by_name(&self, name: &str) -> Result<&Vec<Event>, &'static str> {
 		self.events.get(name)
-					.ok_or_else(|| ErrorKind::InvalidName(name.to_owned()).into())
+					.ok_or_else(|| "Invalid name")
 	}
 
 	/// Iterate over all functions of the contract in arbitrary order.
