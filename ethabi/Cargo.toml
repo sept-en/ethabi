@@ -9,7 +9,7 @@ description = "Easy to use conversion of ethereum contract calls to bytecode."
 
 [dependencies]
 rustc-hex = { version = "2.0", default-features = false }
-serde = { version = "1.0", default-features = false }
+serde = { version = "1.0", optional = true, features = ["derive"] }
 serde_json = { version = "1.0", default-features = false, optional = true }
 serde_derive = { version = "1.0", default-features = false, optional = true }
 tiny-keccak = { version = "1.4", features = ["keccak"]}
