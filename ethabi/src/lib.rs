@@ -15,6 +15,8 @@ extern crate serde_json;
 extern crate tiny_keccak;
 extern crate rstd;
 
+extern crate alloc;
+
 #[cfg(feature = "std")]
 #[macro_use]
 extern crate serde_derive;

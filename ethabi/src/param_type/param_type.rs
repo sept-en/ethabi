@@ -3,6 +3,8 @@
 use std::fmt;
 use super::Writer;
 
+use rstd::boxed::Box;
+
 /// Function and event param types.
 #[derive(Debug, Clone, PartialEq)]
 pub enum ParamType {

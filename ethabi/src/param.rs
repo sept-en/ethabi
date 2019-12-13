@@ -3,8 +3,8 @@ use ParamType;
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 /// Function param.
 #[derive(Debug, Clone, PartialEq)]

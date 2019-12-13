@@ -2,6 +2,10 @@ use token::{Tokenizer, StrictTokenizer};
 use util::{pad_u32, pad_i32};
 use errors::Error;
 
+use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+
 /// Tries to parse string as a token. Does not require string to clearly represent the value.
 pub struct LenientTokenizer;
 

@@ -2,6 +2,10 @@ use hex::FromHex;
 use token::Tokenizer;
 use errors::{Error, ErrorKind};
 
+use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+
 /// Tries to parse string as a token. Require string to clearly represent the value.
 pub struct StrictTokenizer;
 

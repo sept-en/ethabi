@@ -5,8 +5,8 @@ use {Word, Token, Bytes};
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 fn pad_bytes(bytes: &[u8]) -> Vec<Word> {
 	let mut result = vec![pad_u32(bytes.len() as u32)];

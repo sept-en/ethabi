@@ -15,8 +15,8 @@ use {errors, ErrorKind, Event, Constructor, Function};
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 /// API building calls to contracts ABI.
 #[derive(Clone, Debug, PartialEq)]

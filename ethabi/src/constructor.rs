@@ -3,8 +3,8 @@ use {Param, Result, ErrorKind, Token, ParamType, encode, Bytes};
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 /// Contract constructor specification.
 #[derive(Debug, Clone, PartialEq, Deserialize)]

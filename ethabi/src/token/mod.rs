@@ -9,6 +9,10 @@ pub use self::lenient::LenientTokenizer;
 pub use self::strict::StrictTokenizer;
 pub use self::token::Token;
 
+use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+
 /// This trait should be used to parse string values as tokens.
 pub trait Tokenizer {
 	/// Tries to parse a string as a token of given type.

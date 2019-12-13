@@ -8,14 +8,14 @@ use rstd::prelude::*;
 #[cfg(feature = "std")]
 use std::string;
 
-#[cfg(feature = "no_std")]
+#[cfg(not(feature = "std"))]
 use alloc::string;
 
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 #[cfg(feature = "std")]
 use serde_json;
@@ -100,7 +100,7 @@ impl rstd::fmt::Display for Error {
     }
 }
 
-#[cfg(feature = "no_std")]
+#[cfg(not(feature = "std"))]
 impl rstd::fmt::Display for Error {
     fn fmt(&self, fmt: &mut rstd::fmt::Formatter) -> rstd::fmt::Result {
         match *self {

@@ -2,6 +2,9 @@
 use std::fmt;
 use hex::ToHex;
 use {ParamType, Address, FixedBytes, Bytes, Uint};
+use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 /// Ethereum ABI params.
 #[derive(Debug, PartialEq, Clone)]

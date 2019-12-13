@@ -4,8 +4,8 @@ use Hash;
 
 use rstd::vec::Vec;
 
-#[cfg(feature = "no_std")]
-use rstd::alloc::string::String;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 pub fn short_signature(name: &str, params: &[ParamType]) -> [u8; 4] {
 	let mut result = [0u8; 4];
