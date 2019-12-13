@@ -3,3 +3,4 @@ target
 *.swo
 .vscode
 .idea
+.DS_Store
