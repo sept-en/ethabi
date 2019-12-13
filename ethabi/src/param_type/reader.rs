@@ -3,6 +3,7 @@ use {ParamType, Error, ErrorKind};
 /// Used to convert param type represented as a string to rust structure.
 pub struct Reader;
 
+use rstd::boxed::Box;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

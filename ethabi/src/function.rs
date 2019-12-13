@@ -3,6 +3,8 @@
 use signature::short_signature;
 use {Param, Token, Result, ErrorKind, Bytes, decode, ParamType, encode};
 use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
 
 /// Contract function specification.
 #[derive(Debug, Clone, PartialEq, Deserialize)]

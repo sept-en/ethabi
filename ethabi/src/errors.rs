@@ -126,7 +126,7 @@ impl From<serde_json::Error> for Error {
 }
 
 impl From<num::ParseIntError> for Error {
-    fn from(e: std::num::ParseIntError) -> Self {
+    fn from(e: num::ParseIntError) -> Self {
         Error::ParseInt(e)
     }
 }
