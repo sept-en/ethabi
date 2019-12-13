@@ -13,6 +13,11 @@ use std::io;
 use operation::Operation;
 use {errors, ErrorKind, Event, Constructor, Function};
 
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
+
 /// API building calls to contracts ABI.
 #[derive(Clone, Debug, PartialEq)]
 pub struct Contract {

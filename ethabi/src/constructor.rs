@@ -1,6 +1,11 @@
 //! Contract constructor call builder.
 use {Param, Result, ErrorKind, Token, ParamType, encode, Bytes};
 
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
+
 /// Contract constructor specification.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub struct Constructor {

@@ -4,6 +4,8 @@ use serde::{Serialize, Serializer};
 use serde_json::Value;
 use {Hash, Token};
 
+use rstd::vec::Vec;
+
 /// Raw topic filter.
 #[derive(Debug, PartialEq, Default)]
 pub struct RawTopicFilter {

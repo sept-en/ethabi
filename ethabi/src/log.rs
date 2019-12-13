@@ -1,5 +1,7 @@
 use {Hash, Token, Bytes, Result, TopicFilter};
 
+use rstd::vec::Vec;
+
 /// Common filtering functions that are available for any event.
 pub trait LogFilter {
 	/// Match any log parameters.

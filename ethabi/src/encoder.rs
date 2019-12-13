@@ -3,6 +3,11 @@
 use util::pad_u32;
 use {Word, Token, Bytes};
 
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
+
 fn pad_bytes(bytes: &[u8]) -> Vec<Word> {
 	let mut result = vec![pad_u32(bytes.len() as u32)];
 	result.extend(pad_fixed_bytes(bytes));

@@ -1,7 +1,10 @@
 //! Function param.
 use ParamType;
 
-use rstd::prelude::*;
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
 
 /// Function param.
 #[derive(Debug, Clone, PartialEq)]

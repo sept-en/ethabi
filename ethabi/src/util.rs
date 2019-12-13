@@ -2,6 +2,11 @@
 
 use {Word, Error, ErrorKind};
 
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
+
 /// Convers vector of bytes with len equal n * 32, to a vector of slices.
 pub fn slice_data(data: &[u8]) -> Result<Vec<Word>, Error> {
 	if data.len() % 32 != 0 {

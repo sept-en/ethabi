@@ -2,6 +2,11 @@
 
 use {ParamType};
 
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
+
 /// Event param specification.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
 pub struct EventParam {

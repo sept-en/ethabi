@@ -9,6 +9,8 @@ use {
 	Result, ErrorKind
 };
 
+use rstd::vec::Vec;
+
 /// Contract event.
 #[derive(Clone, Debug, PartialEq, Deserialize)]
 pub struct Event {

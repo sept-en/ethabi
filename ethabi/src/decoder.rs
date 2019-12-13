@@ -2,6 +2,10 @@
 
 use util::slice_data;
 use {Word, Token, ErrorKind, Error, ResultExt, ParamType};
+use rstd::vec::Vec;
+
+#[cfg(feature = "no_std")]
+use rstd::alloc::string::String;
 
 struct DecodeResult {
 	token: Token,

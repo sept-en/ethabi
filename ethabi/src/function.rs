@@ -2,6 +2,7 @@
 
 use signature::short_signature;
 use {Param, Token, Result, ErrorKind, Bytes, decode, ParamType, encode};
+use rstd::vec::Vec;
 
 /// Contract function specification.
 #[derive(Debug, Clone, PartialEq, Deserialize)]
