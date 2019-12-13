@@ -30,6 +30,7 @@ pub struct TopicFilter {
 	pub topic3: Topic<Hash>,
 }
 
+#[cfg(feature = "std")]
 impl Serialize for TopicFilter {
 	fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
 	where S: Serializer {

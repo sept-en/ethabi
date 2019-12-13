@@ -9,6 +9,8 @@ use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;
 
+use rstd::borrow::ToOwned;
+
 impl Reader {
 	/// Converts string to param type.
 	pub fn read(name: &str) -> Result<ParamType, Error> {
