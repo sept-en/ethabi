@@ -38,7 +38,8 @@ fn as_bool(slice: &Word) -> Result<bool, Error> {
 pub fn decode(types: &[ParamType], data: &[u8]) -> Result<Vec<Token>, Error> {
     let is_empty_bytes_valid_encoding = types.iter().all(|t| t.is_empty_bytes_valid_encoding());
     if !is_empty_bytes_valid_encoding && data.is_empty() {
-        bail!("please ensure the contract and method you're calling exist! failed to decode empty bytes. if you're using jsonrpc this is likely due to jsonrpc returning `0x` in case contract or method don't exist");
+		return Err(ErrorKind::InvalidData.into());
+//        bail!("please ensure the contract and method you're calling exist! failed to decode empty bytes. if you're using jsonrpc this is likely due to jsonrpc returning `0x` in case contract or method don't exist");
     }
 	let slices = slice_data(data)?;
 	let mut tokens = Vec::with_capacity(types.len());

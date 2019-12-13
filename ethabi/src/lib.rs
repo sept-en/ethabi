@@ -14,9 +14,9 @@ extern crate rstd;
 #[macro_use]
 extern crate serde_derive;
 
-#[cfg(feature = "std")]
-#[macro_use]
-extern crate error_chain;
+//#[cfg(feature = "std")]
+//#[macro_use]
+//extern crate error_chain;
 
 #[cfg(test)]
 #[macro_use]

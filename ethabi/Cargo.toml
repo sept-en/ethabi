@@ -13,7 +13,7 @@ serde = { version = "1.0", default-features = false }
 serde_json = { version = "1.0", default-features = false, optional = true }
 serde_derive = { version = "1.0", default-features = false, optional = true }
 tiny-keccak = { version = "1.4", features = ["keccak"]}
-error-chain = { version = "0.12", default-features = false, optional = true }
+#error-chain = { version = "0.12", default-features = false, optional = true }
 ethereum-types = { git = "https://github.com/darwinia-network/parity-common.git", default-features = false }
 rstd = { package = "sr-std", git = "https://github.com/darwinia-network/substrate.git", branch = "darwinia-develop", default-features = false }
 
@@ -31,10 +31,10 @@ std = [
     "rstd/std",
     "serde_derive",
     "tiny-keccak/keccak",
-    "error-chain",
+#    "error-chain",
     "ethereum-types/std",
 ]
-backtrace = ["error-chain/backtrace"]
+#backtrace = ["error-chain/backtrace"]
 
 [badges]
 travis-ci = { repository = "paritytech/ethabi", branch = "master" }

@@ -95,7 +95,6 @@ dependencies = [
 name = "ethabi"
 version = "9.0.1"
 dependencies = [
- "error-chain 0.12.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "ethereum-types 0.8.0 (git+https://github.com/darwinia-network/parity-common.git)",
  "hex-literal 0.2.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "paste 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
