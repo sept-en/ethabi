@@ -5,6 +5,8 @@
 
 #![warn(missing_docs)]
 
+use rstd::vec::Vec;
+
 extern crate rustc_hex as hex;
 extern crate serde;
 

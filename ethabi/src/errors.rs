@@ -3,6 +3,8 @@
 
 use rstd::num;
 
+use rstd::prelude::*;
+
 #[cfg(feature = "std")]
 use std::string;
 

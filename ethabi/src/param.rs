@@ -1,6 +1,8 @@
 //! Function param.
 use ParamType;
 
+use rstd::prelude::*;
+
 /// Function param.
 #[derive(Debug, Clone, PartialEq)]
 #[cfg_attr(feature = "std", derive(Deserialize))]
