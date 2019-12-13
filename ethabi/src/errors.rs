@@ -51,9 +51,10 @@ impl rstd::fmt::Display for ErrorKind {
 }
 
 
-#[cfg(feature = "std")]
+
 #[derive(Debug)]
 pub enum Error {
+    #[cfg(feature = "std")]
     SerdeJson(serde_json::Error),
     ParseInt(num::ParseIntError),
     Utf8(string::FromUtf8Error),
@@ -61,14 +62,14 @@ pub enum Error {
     ErrorKind(ErrorKind),
 }
 
-#[cfg(feature = "no_std")]
-#[derive(Debug)]
-pub enum Error {
-    ParseInt(num::ParseIntError),
-    Utf8(string::FromUtf8Error),
-    Hex(hex::FromHexError),
-    ErrorKind(ErrorKind),
-}
+//#[cfg(feature = "no_std")]
+//#[derive(Debug)]
+//pub enum Error {
+//    ParseInt(num::ParseIntError),
+//    Utf8(string::FromUtf8Error),
+//    Hex(hex::FromHexError),
+//    ErrorKind(ErrorKind),
+//}
 
 pub type Result<T> = rstd::result::Result<T, Error>;
 
