@@ -5,6 +5,8 @@ use super::Writer;
 
 use rstd::boxed::Box;
 
+use rstd::borrow::ToOwned;
+
 /// Function and event param types.
 #[derive(Debug, Clone, PartialEq)]
 pub enum ParamType {

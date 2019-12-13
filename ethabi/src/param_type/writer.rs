@@ -3,6 +3,8 @@ use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;
 
+use rstd::borrow::ToOwned;
+
 use ParamType;
 
 /// Output formatter for param type.

@@ -32,14 +32,17 @@ pub struct Contract {
 	pub fallback: bool,
 }
 
+#[cfg(feature = "std")]
 impl<'a> Deserialize<'a> for Contract {
 	fn deserialize<D>(deserializer: D) -> Result<Contract, D::Error> where D: Deserializer<'a> {
 		deserializer.deserialize_any(ContractVisitor)
 	}
 }
 
+#[cfg(feature = "std")]
 struct ContractVisitor;
 
+#[cfg(feature = "std")]
 impl<'a> Visitor<'a> for ContractVisitor {
 	type Value = Contract;
 
