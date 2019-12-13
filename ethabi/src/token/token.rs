@@ -1,5 +1,5 @@
 //! Ethereum ABI params.
-use std::fmt;
+use rstd::fmt;
 use hex::ToHex;
 use {ParamType, Address, FixedBytes, Bytes, Uint};
 use rstd::vec::Vec;

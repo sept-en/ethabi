@@ -7,7 +7,8 @@ use rstd::vec::Vec;
 use alloc::string::String;
 
 /// Contract constructor specification.
-#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "std", derive(Deserialize))]
 pub struct Constructor {
 	/// Constructor input.
 	pub inputs: Vec<Param>,

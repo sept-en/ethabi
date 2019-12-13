@@ -13,7 +13,7 @@ pub struct Param {
 	/// Param name.
 	pub name: String,
 	/// Param type.
-	#[serde(rename="type")]
+	#[cfg_attr(feature = "std", serde(rename="type"))]
 	pub kind: ParamType,
 }
 

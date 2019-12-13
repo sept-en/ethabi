@@ -14,7 +14,8 @@ use rstd::vec::Vec;
 use alloc::string::String;
 
 /// Contract event.
-#[derive(Clone, Debug, PartialEq, Deserialize)]
+#[derive(Clone, Debug, PartialEq)]
+#[cfg_attr(feature = "std", derive(Deserialize))]
 pub struct Event {
 	/// Event name.
 	pub name: String,

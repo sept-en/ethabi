@@ -1,6 +1,6 @@
 //! Function and event param types.
 
-use std::fmt;
+use rstd::fmt;
 use super::Writer;
 
 use rstd::boxed::Box;

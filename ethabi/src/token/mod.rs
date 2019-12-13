@@ -9,6 +9,7 @@ pub use self::lenient::LenientTokenizer;
 pub use self::strict::StrictTokenizer;
 pub use self::token::Token;
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

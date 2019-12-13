@@ -1,4 +1,4 @@
-use std::fmt;
+use rstd::fmt;
 use serde::{Deserialize, Deserializer};
 use serde::de::{Error as SerdeError, Visitor};
 use super::{ParamType, Reader};
