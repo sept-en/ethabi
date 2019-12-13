@@ -2,8 +2,8 @@ use tiny_keccak::Keccak;
 use param_type::{Writer, ParamType};
 use Hash;
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
-
 #[cfg(not(feature = "std"))]
 use alloc::string::String;
 

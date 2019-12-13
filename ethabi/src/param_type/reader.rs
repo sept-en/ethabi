@@ -4,6 +4,7 @@ use {ParamType, Error, ErrorKind};
 pub struct Reader;
 
 use rstd::boxed::Box;
+use rstd::prelude::*;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

@@ -1,6 +1,7 @@
 //! Contract constructor call builder.
 use {Param, Result, ErrorKind, Token, ParamType, encode, Bytes};
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 #[cfg(not(feature = "std"))]

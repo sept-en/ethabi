@@ -13,6 +13,7 @@ use std::io;
 use operation::Operation;
 use {errors, ErrorKind, Event, Constructor, Function};
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 #[cfg(not(feature = "std"))]

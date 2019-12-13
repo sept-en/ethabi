@@ -1,7 +1,7 @@
 //! Event param specification.
 
 use {ParamType};
-
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 #[cfg(not(feature = "std"))]

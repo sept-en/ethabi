@@ -2,7 +2,7 @@
 
 use util::pad_u32;
 use {Word, Token, Bytes};
-
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 #[cfg(not(feature = "std"))]

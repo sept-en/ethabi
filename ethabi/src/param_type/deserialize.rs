@@ -3,6 +3,7 @@ use serde::{Deserialize, Deserializer};
 use serde::de::{Error as SerdeError, Visitor};
 use super::{ParamType, Reader};
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

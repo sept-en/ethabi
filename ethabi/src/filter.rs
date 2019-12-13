@@ -3,7 +3,7 @@ use serde::{Serialize, Serializer};
 #[cfg(feature = "std")]
 use serde_json::Value;
 use {Hash, Token};
-
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 /// Raw topic filter.

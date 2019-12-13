@@ -70,14 +70,14 @@ pub enum Error {
     ErrorKind(ErrorKind),
 }
 
-//#[cfg(feature = "no_std")]
-//#[derive(Debug)]
-//pub enum Error {
-//    ParseInt(num::ParseIntError),
-//    Utf8(string::FromUtf8Error),
-//    Hex(hex::FromHexError),
-//    ErrorKind(ErrorKind),
-//}
+#[cfg(not(feature = "std"))]
+#[derive(Debug)]
+pub enum Error {
+    ParseInt(num::ParseIntError),
+    Utf8(string::FromUtf8Error),
+    Hex(hex::FromHexError),
+    ErrorKind(ErrorKind),
+}
 
 pub type Result<T> = rstd::result::Result<T, Error>;
 
@@ -104,7 +104,6 @@ impl rstd::fmt::Display for Error {
 impl rstd::fmt::Display for Error {
     fn fmt(&self, fmt: &mut rstd::fmt::Formatter) -> rstd::fmt::Result {
         match *self {
-            Error::SerdeJson(ref e) => write!(fmt, "{}", e),
             Error::ParseInt(ref e) => write!(fmt, "{}", e),
             Error::Utf8(ref e) => write!(fmt, "{}", e),
             Error::Hex(ref e) => write!(fmt, "{}", e),

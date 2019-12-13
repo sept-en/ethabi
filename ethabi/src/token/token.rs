@@ -2,6 +2,7 @@
 use rstd::fmt;
 use hex::ToHex;
 use {ParamType, Address, FixedBytes, Bytes, Uint};
+use rstd::prelude::*;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

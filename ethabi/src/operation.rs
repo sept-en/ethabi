@@ -8,6 +8,11 @@ use serde_json::Value;
 use serde_json::value::from_value;
 use {Function, Constructor, Event};
 
+use rstd::prelude::*;
+use rstd::vec::Vec;
+#[cfg(not(feature = "std"))]
+use alloc::string::String;
+
 /// Operation type.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Operation {

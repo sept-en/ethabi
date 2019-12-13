@@ -2,6 +2,7 @@ use token::{Tokenizer, StrictTokenizer};
 use util::{pad_u32, pad_i32};
 use errors::Error;
 
+use rstd::prelude::*;
 use rstd::vec::Vec;
 #[cfg(not(feature = "std"))]
 use alloc::string::String;

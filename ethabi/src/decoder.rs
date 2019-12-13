@@ -2,6 +2,7 @@
 
 use util::slice_data;
 use {Word, Token, ErrorKind, Error, ResultExt, ParamType};
+use rstd::prelude::*;
 use rstd::vec::Vec;
 
 #[cfg(not(feature = "std"))]
