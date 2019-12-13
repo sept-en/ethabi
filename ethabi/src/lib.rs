@@ -51,7 +51,6 @@ pub use param_type::ParamType;
 pub use constructor::Constructor;
 pub use contract::{Contract, Functions, Events};
 pub use token::Token;
-#[cfg(feature = "std")]
 pub use errors::{Error, ErrorKind, Result, ResultExt};
 pub use encoder::encode;
 pub use decoder::decode;
