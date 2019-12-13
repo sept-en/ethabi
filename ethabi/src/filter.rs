@@ -1,4 +1,5 @@
 use rstd::ops;
+#[cfg(feature = "std")]
 use serde::{Serialize, Serializer};
 #[cfg(feature = "std")]
 use serde_json::Value;

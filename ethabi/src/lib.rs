@@ -8,6 +8,7 @@
 use rstd::vec::Vec;
 
 extern crate rustc_hex as hex;
+#[cfg(feature = "std")]
 extern crate serde;
 
 #[cfg(feature = "std")]

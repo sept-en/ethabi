@@ -1,6 +1,7 @@
 //! Operation type.
-
+#[cfg(feature = "std")]
 use serde::{Deserialize, Deserializer};
+#[cfg(feature = "std")]
 use serde::de::{Error as SerdeError};
 #[cfg(feature = "std")]
 use serde_json::Value;

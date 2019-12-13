@@ -2,7 +2,9 @@ use rstd::fmt;
 use rstd::collections::btree_map::BTreeMap;
 use rstd::collections::btree_map::Values;
 use rstd::iter::Flatten;
+#[cfg(feature = "std")]
 use serde::{Deserialize, Deserializer};
+#[cfg(feature = "std")]
 use serde::de::{Visitor, SeqAccess};
 
 #[cfg(feature = "std")]
