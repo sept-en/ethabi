@@ -60,9 +60,9 @@ impl rstd::fmt::Display for ErrorKind {
 
 
 
+#[cfg(feature = "std")]
 #[derive(Debug)]
 pub enum Error {
-    #[cfg(feature = "std")]
     SerdeJson(serde_json::Error),
     ParseInt(num::ParseIntError),
     Utf8(string::FromUtf8Error),

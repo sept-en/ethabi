@@ -8,7 +8,8 @@ use rstd::vec::Vec;
 use alloc::string::String;
 
 /// Contract function specification.
-#[derive(Debug, Clone, PartialEq, Deserialize)]
+#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "std", derive(Deserialize))]
 pub struct Function {
 	/// Function name.
 	pub name: String,
@@ -17,7 +18,7 @@ pub struct Function {
 	/// Function output.
 	pub outputs: Vec<Param>,
 	/// Constant function.
-	#[serde(default)]
+	#[cfg_attr(feature = "std", serde(default))]
 	pub constant: bool,
 }
 
