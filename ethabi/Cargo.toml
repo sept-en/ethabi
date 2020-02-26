@@ -15,7 +15,7 @@ serde_derive = { version = "1.0", optional = true }
 tiny-keccak = { version = "1.4", features = ["keccak"]}
 #error-chain = { version = "0.12", default-features = false, optional = true }
 ethereum-types = { git = "https://github.com/darwinia-network/parity-common.git", default-features = false }
-rstd = { package = "sr-std", git = "https://github.com/darwinia-network/substrate.git", branch = "darwinia-develop", default-features = false }
+rstd = { package = "sp-std", git = "https://github.com/darwinia-network/substrate.git", branch = "darwinia-develop", default-features = false }
 
 
 [dev-dependencies]
