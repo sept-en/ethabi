@@ -177,9 +177,10 @@ fn encode_token(token: &Token) -> Mediate {
 
 /// Encodes vector of tokens using non-standard Packed mode into ABI.encodePacked() compliant vector of bytes.
 pub fn encode_packed(tokens: &[Token]) -> Bytes {
-	let mediates = &tokens.iter().map(encode_token_packed).collect::<Vec<_>>();
-
-	mediates.iter().flat_map(|word| word.to_vec()).collect()
+	tokens
+		.iter()
+		.flat_map(|token| encode_token_packed(token))
+		.collect()
 }
 
 fn encode_token_packed(token: &Token) -> Vec<u8> {
@@ -193,11 +194,11 @@ fn encode_token_packed(token: &Token) -> Vec<u8> {
 		Token::Int(int) => {
 			let data: [u8; 32] = int.into();
 			(data[..]).to_vec()
-                }
+		}
 		Token::Uint(uint) => {
 			let data: [u8; 32] = uint.into();
 			(data[..]).to_vec()
-                }
+		}
 		Token::Bool(b) => {
 			vec![b.into()]
 		},
