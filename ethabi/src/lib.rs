@@ -44,6 +44,7 @@ pub use crate::{
 	contract::{Contract, Events, Functions},
 	decoder::decode,
 	encoder::encode,
+	encoder::encode_packed,
 	errors::{Error, Result},
 	event::Event,
 	event_param::EventParam,

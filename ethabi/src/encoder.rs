@@ -175,9 +175,41 @@ fn encode_token(token: &Token) -> Mediate {
 	}
 }
 
+/// Encodes vector of tokens using non-standard Packed mode into ABI.encodePacked() compliant vector of bytes.
+pub fn encode_packed(tokens: &[Token]) -> Bytes {
+	let mediates = &tokens.iter().map(encode_token_packed).collect::<Vec<_>>();
+
+	mediates.iter().flat_map(|word| word.to_vec()).collect()
+}
+
+fn encode_token_packed(token: &Token) -> Vec<u8> {
+	match *token {
+		Token::Address(ref address) => {
+			address.as_ref().to_vec()
+		}
+		Token::Bytes(ref bytes) => bytes.to_vec(),
+		Token::String(ref s) => s.as_bytes().to_vec(),
+		Token::FixedBytes(ref bytes) => bytes.to_vec(),
+		Token::Int(int) => {
+			let data: [u8; 32] = int.into();
+			(data[..]).to_vec()
+                }
+		Token::Uint(uint) => {
+			let data: [u8; 32] = uint.into();
+			(data[..]).to_vec()
+                }
+		Token::Bool(b) => {
+			vec![b.into()]
+		},
+		Token::Array(_) | Token::FixedArray(_) | Token::Tuple(_) => {
+			panic!("These token types are not supported in packed mode");
+		}
+	}
+}
+
 #[cfg(test)]
 mod tests {
-	use crate::{encode, util::pad_u32, Token};
+	use crate::{encode, encode_packed, util::pad_u32, Token};
 	#[cfg(not(feature = "std"))]
 	use alloc::borrow::ToOwned;
 	use hex_literal::hex;
@@ -187,6 +219,67 @@ mod tests {
 		let address = Token::Address([0x11u8; 20].into());
 		let encoded = encode(&[address]);
 		let expected = hex!("0000000000000000000000001111111111111111111111111111111111111111");
+		assert_eq!(encoded, expected);
+	}
+
+	#[test]
+	fn packed_encode_address() {
+		let address = Token::Address([0x11u8; 20].into());
+		let encoded = encode_packed(&[address]);
+		let expected = hex!("1111111111111111111111111111111111111111");
+		assert_eq!(encoded, expected);
+        }
+
+	#[test]
+	fn packed_encode_bytes() {
+		let s = String::from("domain");
+		let s_bytes = s.into_bytes();
+		let token = Token::Bytes(s_bytes);
+		let encoded = encode_packed(&[token]);
+		let expected = hex!("646f6d61696e");
+		assert_eq!(encoded, expected);
+	}
+
+	#[test]
+	fn packed_encode_uint() {
+		let mut uint = [0u8; 32];
+		uint[24..32].copy_from_slice(&(1313161554_u64.to_be_bytes())[..]);
+		let token = Token::Uint(uint.into()); // chain ID
+		let encoded = encode_packed(&[token]);
+		let expected = hex!("000000000000000000000000000000000000000000000000000000004e454152");
+		assert_eq!(encoded, expected);
+	}
+
+	#[test]
+	fn packed_encode_withdraw_from_evm_request_type() {
+		let s = Token::String(
+			"WithdrawFromEVMRequest(address recipient,uint256 amount,uint256 nonce,address verifyingContract)".to_string());
+		let encoded = encode_packed(&[s]);
+		let expected = hex!("576974686472617746726f6d45564d52657175657374286164647265737320726563697069656e742c75696e7432353620616d6f756e742c75696e74323536206e6f6e63652c6164647265737320766572696679696e67436f6e747261637429");
+		assert_eq!(encoded, expected);
+	}
+
+	#[test]
+	fn packed_encode_eip712_domain_type() {
+		let s = Token::String(
+			"EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)".to_string());
+		let encoded = encode_packed(&[s]);
+		let expected = hex!("454950373132446f6d61696e28737472696e67206e616d652c737472696e672076657273696f6e2c75696e7432353620636861696e49642c6164647265737320766572696679696e67436f6e747261637429");
+		assert_eq!(encoded, expected);
+	}
+
+	#[test]
+	fn packed_encode_eip712_domain_aurora_sample() {
+		let domain = Token::Bytes(String::from("Aurora-Engine domain").into_bytes());
+		let version = Token::Bytes(String::from("1.0").into_bytes());
+		//3333333333333333333333333333333333333333
+		let mut chain_id = [0u8; 32];
+		chain_id[24..32].copy_from_slice(&(1313161554_u64.to_be_bytes())[..]);
+		let chain_id = Token::Uint(chain_id.into());
+		let eth_custodian_address = Token::Address([0x33u8; 20].into());
+
+		let encoded = encode_packed(&[domain, version, chain_id, eth_custodian_address]);
+		let expected = hex!("4175726f72612d456e67696e6520646f6d61696e312e30000000000000000000000000000000000000000000000000000000004e4541523333333333333333333333333333333333333333");
 		assert_eq!(encoded, expected);
 	}
 
