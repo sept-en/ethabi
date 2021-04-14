@@ -186,25 +186,27 @@ pub fn encode_packed(tokens: &[Token]) -> Bytes {
 fn encode_token_packed(token: &Token) -> Vec<u8> {
 	match *token {
 		Token::Address(ref address) => {
-			address.as_ref().to_vec()
-		}
+			let mut padded = [0u8; 32];
+			padded[12..].copy_from_slice(address.as_ref());
+			padded[..].to_vec()
+		},
 		Token::Bytes(ref bytes) => bytes.to_vec(),
 		Token::String(ref s) => s.as_bytes().to_vec(),
 		Token::FixedBytes(ref bytes) => bytes.to_vec(),
 		Token::Int(int) => {
 			let data: [u8; 32] = int.into();
-			(data[..]).to_vec()
-		}
+			data[..].to_vec()
+		},
 		Token::Uint(uint) => {
 			let data: [u8; 32] = uint.into();
-			(data[..]).to_vec()
-		}
+			data[..].to_vec()
+		},
 		Token::Bool(b) => {
 			vec![b.into()]
 		},
 		Token::Array(_) | Token::FixedArray(_) | Token::Tuple(_) => {
 			panic!("These token types are not supported in packed mode");
-		}
+		},
 	}
 }
 
